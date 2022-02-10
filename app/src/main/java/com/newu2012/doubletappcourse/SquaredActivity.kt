@@ -16,9 +16,7 @@ class SquaredActivity : AppCompatActivity() {
 
     private fun setInitState() {
         squaredNumber = findViewById(R.id.squaredNumber)
-        squaredNumber.text =
-            intent.getStringExtra("currentNumber").toString()
-                .toDouble().pow(2)
-                .toInt().toString()
+        squaredNumber.text = intent.extras?.getString("currentNumber")
+            ?.toDouble()?.pow(2)?.toInt().toString()
     }
 }
