@@ -1,14 +1,18 @@
 package com.newu2012.doubletappcourse
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     private val _currentNumber = "currentNumber"
 
     private lateinit var currentNumber: TextView
+    private lateinit var squaredViewButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +22,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun setInitState() {
         currentNumber = findViewById(R.id.currentNumber)
+        squaredViewButton = findViewById(R.id.squaredViewButton)
+        squaredViewButton.setOnClickListener { openSquaredView() }
+    }
+
+    private fun openSquaredView() {
+        val squaredViewIntent = Intent(
+            this,
+            SquaredActivity::class.java
+        ).apply {
+            putExtra(_currentNumber, currentNumber.text)
+        }
+
+        startActivity(squaredViewIntent)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
