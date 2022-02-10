@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DoubleTappCourse</string>
+    <string name="currentNumber">0</string>
 </resources>
